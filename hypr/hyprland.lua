@@ -108,6 +108,8 @@ hl.config({
 		disable_hyprland_logo = true,
 		disable_splash_rendering = true,
 		mouse_move_enables_dpms = true,
+		vrr = 2,
+		middle_click_paste = false,
 	},
 
 	input = {
@@ -116,6 +118,20 @@ hl.config({
 		follow_mouse = 1,
 		sensitivity = 0,
 		accel_profile = "flat",
+	},
+
+	render = {
+		direct_scanout = 1,
+	},
+
+	xwayland = {
+		use_nearest_neighbor = 0,
+		force_zero_scaling = 1,
+		create_abstract_socket = 1,
+	},
+
+	cursor = {
+		use_cpu_buffer = 0,
 	},
 })
 
@@ -172,6 +188,8 @@ hl.bind(mainMod .. " + CTRL + K",   hl.dsp.window.swap({ direction = "down" }))
 hl.bind(mainMod .. " + CTRL + L",   hl.dsp.window.swap({ direction = "right" }))
 hl.bind(mainMod .. " + F",          hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + TAB",        hl.dsp.window.cycle_next())
+hl.bind(mainMod .. " + SPACE",      hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + T",          hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + ALT + G",    hl.dsp.exec_cmd("~/.config/hypr/scripts/gamemode.sh"))
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
@@ -207,6 +225,16 @@ hl.window_rule({
 	},
 
 	no_focus = true,
+})
+
+hl.window_rule({
+	match = { class = "^(steam_app_.*)$" },
+	immediate = true
+})
+
+hl.window_rule({
+	match = { class = "(.*waypaper.*)" },
+	float = true,
 })
 
 hl.workspace_rule({ workspace = "1", monitor = "DP-2", default = true })
