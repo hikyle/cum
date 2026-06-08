@@ -26,7 +26,7 @@ foreground = "#a9b1d6"
 [window]
 padding = { x = 10, y = 10 }
 dynamic_padding = true
-opacity = 1.0
+opacity = 0.8
 
 [font]
 normal      = { family = "JetBrainsMono Nerd Font", style = "Regular" }

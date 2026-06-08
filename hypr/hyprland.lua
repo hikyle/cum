@@ -21,6 +21,26 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
 end)
 
+-- Custom functions --
+function activate_gamemode()
+	hl.config({
+		animations = { enabled = false },
+		decoration = {
+			shadow = { enabled = false },
+			blur = { enabled = false },
+			active_opacity = 1.0,
+			inactive_opacity = 1.0,
+			fullscreen_opacity = 1.0,
+			rounding = 0
+		},
+		general = {
+			gaps_in = 0,
+			gaps_out = 0,
+			border_size = 1,
+		}
+	})
+end
+
 -- Environment variables --
 hl.env("GBM_BACKEND", "nvidia-drm")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
@@ -38,13 +58,13 @@ hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 -- Look and feel --
 hl.config({
 	general = {
-		gaps_in = 5,
-		gaps_out = 10,
-		border_size = 2,
+		gaps_in = 6,
+		gaps_out = 12,
+		border_size = 1,
 
 		col = {
-			active_border = "rgba(cfc9c2ff)",
-			inactive_border = "rgba(414868ff)",
+			active_border = "rgb(f5c2e7)",
+			inactive_border = "rgb(45475a)",
 		},
 
 		resize_on_border = false,
@@ -53,7 +73,7 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 5,
+		rounding = 12,
 		rounding_power = 2,
 		active_opacity = 1.0,
 		inactive_opacity = 1.0,
@@ -66,10 +86,12 @@ hl.config({
 		},
 
 		blur = {
-			enabled = false,
-			size = 3,
-			passes = 1,
+			enabled = true,
+			size = 10,
+			passes = 2,
 			vibrancy = 0.1696,
+			new_optimizations = true,
+			xray = true,
 		},
 	},
 
@@ -148,6 +170,9 @@ hl.bind(mainMod .. " + CTRL + I",   hl.dsp.window.swap({ direction = "up" }))
 hl.bind(mainMod .. " + CTRL + J",   hl.dsp.window.swap({ direction = "left" }))
 hl.bind(mainMod .. " + CTRL + K",   hl.dsp.window.swap({ direction = "down" }))
 hl.bind(mainMod .. " + CTRL + L",   hl.dsp.window.swap({ direction = "right" }))
+hl.bind(mainMod .. " + F",          hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + TAB",        hl.dsp.window.cycle_next())
+hl.bind(mainMod .. " + ALT + G",    hl.dsp.exec_cmd("~/.config/hypr/scripts/gamemode.sh"))
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272",  hl.dsp.window.drag(), { mouse = true })
