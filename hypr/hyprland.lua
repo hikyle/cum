@@ -54,6 +54,10 @@ hl.env("CLUTTER_BACKEND", "wayland")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
+hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("XCURSOR_SIZE", "24")
 
 -- Look and feel --
 hl.config({
@@ -132,6 +136,7 @@ hl.config({
 
 	cursor = {
 		use_cpu_buffer = 0,
+		no_hardware_cursors = 1,
 	},
 })
 
