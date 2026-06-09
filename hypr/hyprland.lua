@@ -18,7 +18,7 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("waypaper --restore")
 	hl.exec_cmd("hypridle")
-	hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
+	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
 -- Custom functions --
@@ -168,7 +168,7 @@ hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "
 
 -- Keybinds & default programs --
 local terminal = "alacritty"
-local fileManager = "dolphin"
+local fileManager = "thunar"
 local menu = "fuzzel"
 local browser = "brave-origin"
 local mainMod = "SUPER"
