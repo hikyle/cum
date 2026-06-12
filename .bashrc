@@ -16,4 +16,5 @@ if [[ $(tty) == *"pts"* ]]; then
 	fastfetch
 fi
 
-PS1="\[\e[38;5;75m\]\u@\h \[\e[38;5;113m\]\w \[\e[38;5;189m\]\$ \[\e[0m\]"
+# PS1="\[\e[38;5;75m\]\u@\h \[\e[38;5;113m\]\w \[\e[38;5;189m\]\$ \[\e[0m\]"
+eval "$(oh-my-posh init bash --config robbyrussell)"
