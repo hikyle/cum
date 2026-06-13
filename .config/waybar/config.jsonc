@@ -95,7 +95,7 @@
 	},
 
 	"custom/launcher": {
-		"format": "",
+		"format": "",
 		"tooltip": false,
 		"tooltip-format": "Left click: Rofi",
 		"on-click": "fuzzel"

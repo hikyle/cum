@@ -19,6 +19,7 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("waypaper --restore")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
+	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 end)
 
 -- Custom functions --
@@ -195,6 +196,7 @@ hl.bind(mainMod .. " + CTRL + L",   hl.dsp.window.swap({ direction = "right" }))
 hl.bind(mainMod .. " + F",          hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + TAB",        hl.dsp.window.cycle_next())
 hl.bind(mainMod .. " + SPACE",      hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + SHIFT + B",  hl.dsp.exec_cmd("killall waybar && waybar &"))
 hl.bind(mainMod .. " + T",          hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + ALT + G",    hl.dsp.exec_cmd("~/.config/hypr/scripts/gamemode.sh"))
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -235,12 +237,33 @@ hl.window_rule({
 
 hl.window_rule({
 	match = { class = "^(steam_app_.*)$" },
-	immediate = true
+	immediate = true,
 })
 
 hl.window_rule({
 	match = { class = "(.*waypaper.*)" },
 	float = true,
+})
+
+hl.window_rule({
+	match = { class = "(.*ProtonPlus.*)" },
+	float = true,
+})
+
+hl.window_rule({
+	match = { class = "(.*org.pulseaudio.pavucontrol.*)" },
+	float = true,
+	pin = true,
+	center = true,
+	size = {700, 600},
+})
+
+hl.window_rule({
+	match = { class = "(hyprland-share-picker)" },
+	float = true,
+	pin = true,
+	center = true,
+	size = {600, 400},
 })
 
 hl.workspace_rule({ workspace = "1", monitor = "DP-2", default = true })

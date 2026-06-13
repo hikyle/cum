@@ -1,0 +1,25 @@
+sort=-time
+layer=overlay
+background-color=#1a1b26ee
+width=420
+height=120
+border-size=2
+border-color=#f5c2e7
+border-radius=10
+icons=0
+max-icon-size=64
+default-timeout=5000
+ignore-timeout=0
+font="Inter Nerd Font Propo" 14
+margin=12
+padding=12,20
+
+[urgency=low]
+border-color=#cccccc
+
+[urgency=normal]
+border-color=#f5c2e7
+
+[urgency=critical]
+border-color=#bf616a
+default-timeout=0
